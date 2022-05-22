@@ -23,7 +23,7 @@ class utils{
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 		$response = curl_exec($curl);
 		curl_close($curl);
-		file_put_contents("vk.log", $response, FILE_APPEND);
+		//file_put_contents("vk.log", $response, FILE_APPEND);
 		return json_decode($response);
     }
     public function getUserInfo($id, $fields = "first_name,last_name,city,country,domain,id"){
