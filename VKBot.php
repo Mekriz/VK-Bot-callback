@@ -37,7 +37,6 @@ switch ($data->type) {
         echo $confirmation_token;
     break;
     case 'message_new':
-        echo "ok";
         $user_id = $data->object->message->from_id;
         $peer_id = $data->object->message->peer_id;
         $msg = $data->object->message->text;
@@ -46,6 +45,8 @@ switch ($data->type) {
         $user = new user($user_id, $peer_id, $utils);
         $cmd = new cmd($msg);
         $plugin->onMessage($cmd, $user, $utils);
+        header("HTTP/1.1 200 OK");
+        echo "ok";
     break;
 }
 ?>
