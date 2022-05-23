@@ -23,10 +23,10 @@ require_once("VKUser.php");
 require_once("Utils.php");
 
 //ключ подтверждения
-$confirmation_token = 'd3555c77';
+$confirmation_token = '';
 
 //Ключ доступа сообщества
-$token = '945e966f42317a8af406325916e5b4da1cddd084d43f604a864609cd8b5ac04b1671753793bca022a8ed0';
+$token = '';
 
 $data = json_decode(file_get_contents('php://input'));
 switch ($data->type) {
