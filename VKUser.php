@@ -18,8 +18,8 @@ class user{
         $this->id = $id;
         $this->peer_id = $peer_id;
     }
-    public function sendMessage($msg){
-        return $this->utils->sendMessage($msg, $this->peer_id);
+    public function sendMessage($msg, $attachments = []){
+        return $this->utils->sendMessage($msg, $this->peer_id, $attachments);
     }
     public function getID(){
         return $this->id;

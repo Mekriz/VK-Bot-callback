@@ -13,7 +13,8 @@
 */
 class cmd{
     
-    public function __construct($msg){
+    public function __construct($msg, $attachments){
+        $this->attachments = $attachments;
         $this->msg = $msg;
         $msg = explode(" ", $msg);
         $cmd = mb_strtolower($msg[0]);
@@ -30,5 +31,11 @@ class cmd{
     }
     public function getFull(){
         return $this->msg;
+    }
+    public function getAttachments(){
+        return $this->attachments;
+    }
+    public function getCountAttachments(){
+        return count($this->attachments);
     }
 }

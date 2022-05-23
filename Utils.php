@@ -34,13 +34,14 @@ class utils{
         'fields' => $fields
         ), "users.get");
     }
-    public function sendMessage($msg, $peer_id){
+    public function sendMessage($msg, $peer_id, $attachments = []){
         return $this->curlRequest(array(
         'message' => $msg,
         'peer_id' => $peer_id,
         'access_token' => $this->token,
         'v' => '5.103',
-        'random_id' => '0'
+        'random_id' => '0',
+        'attachment' => $attachments
         ));
     }
 }
