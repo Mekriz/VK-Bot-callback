@@ -21,6 +21,9 @@ class user{
     public function sendMessage($msg, $attachments = []){
         return $this->utils->sendMessage($msg, $this->peer_id, $attachments);
     }
+    public function sendKeyboard($msg, $keyboard, $attachments = []){
+        return $this->utils->sendKeyboard($msg, $this->peer_id, $keyboard, $attachments);
+    }
     public function getID(){
         return $this->id;
     }

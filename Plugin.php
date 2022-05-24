@@ -11,12 +11,14 @@
    ██║░╚═╝░██║███████╗  ██║░╚██╗██║░░██║██║███████╗
    ╚═╝░░░░░╚═╝╚══════╝  ╚═╝░░╚═╝╚═╝░░╚═╝╚═╝╚══════╝
 */
+
 class plugin{
     
     public function __construct(){
     }
     public function onMessage($command, $user, $utils){
         require_once("Config.php");
+        require_once("Keyboard.php");
         $cmd = $command->getName();
         $args = $command->getArgs();
         $fname = $user->getFirstName();
@@ -28,6 +30,14 @@ class plugin{
             $this->test->save();
         }
         //пример выполнения комманд
+        if($cmd == "/клава"){
+            $kb = new keyboard(true);
+            $kb->addTextButton("🍏 яблоко", "positive");
+            $kb->addTextButton("🍎 яблоко", "negative");
+            $kb->addLine();
+            $kb->addTextButton("Выбирай");
+            $user->sendKeyboard("Клавиатура", $kb->getAll());
+        }
         if($cmd == "/привет"){
             if(isset($command->getAttachments()[0])){
                 //в случае присутствия изображения - пересылает его

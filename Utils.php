@@ -41,7 +41,20 @@ class utils{
         'access_token' => $this->token,
         'v' => '5.103',
         'random_id' => '0',
-        'attachment' => $attachments
+        'attachment' => $attachments,
+        'disable_mentions' => "1"
+        ));
+    }
+    public function sendKeyboard($msg, $peer_id, $keyboard, $attachments = []){
+        return $this->curlRequest(array(
+        'message' => $msg,
+        'peer_id' => $peer_id,
+        'access_token' => $this->token,
+        'v' => '5.103',
+        'random_id' => '0',
+        'attachment' => $attachments,
+        'keyboard' => json_encode($keyboard),
+        'disable_mentions' => "1"
         ));
     }
 }
