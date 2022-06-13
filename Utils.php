@@ -30,13 +30,13 @@ class utils{
 	if(isset($this->info) && $fields == "first_name,last_name"){
             return $this->info;
 	}
-        $this->info["object"] = $this->curlRequest(array(
+        $this->info = $this->curlRequest(array(
         'user_ids' => $id,
         'access_token' => $this->token,
         'v' => '5.103',
         'fields' => $fields
         ), "users.get");
-	return $this->info["object"];
+	return $this->info;
     }
     public function sendMessage($msg, $peer_id, $attachments = []){
         return $this->curlRequest(array(
