@@ -26,13 +26,17 @@ class utils{
 		//file_put_contents("vk.log", $response, FILE_APPEND);
 		return json_decode($response);
     }
-    public function getUserInfo($id, $fields = "first_name,last_name,city,country,domain,id"){
-        return $this->curlRequest(array(
+    public function getUserInfo($id, $fields = "first_name,last_name"){
+	if(isset($this->info) && $fields == "first_name,last_name"){
+            return $this->info;
+	}
+        $this->info["object"] = $this->curlRequest(array(
         'user_ids' => $id,
         'access_token' => $this->token,
         'v' => '5.103',
         'fields' => $fields
         ), "users.get");
+	return $this->info["object"];
     }
     public function sendMessage($msg, $peer_id, $attachments = []){
         return $this->curlRequest(array(
