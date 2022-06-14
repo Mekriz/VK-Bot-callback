@@ -11,29 +11,28 @@
    ██║░╚═╝░██║███████╗  ██║░╚██╗██║░░██║██║███████╗
    ╚═╝░░░░░╚═╝╚══════╝  ╚═╝░░╚═╝╚═╝░░╚═╝╚═╝╚══════╝
 */
-class user{
+class cmd{
     
-    public function __construct($id, $peer_id, $utils){
-        $this->utils = $utils;
-        $this->id = $id;
-        $this->peer_id = $peer_id;
+    public function __construct($msg, $attachments){
+        $this->attachments = $attachments;
+        $this->msg = $msg;
+        $msg = explode(" ", $msg);
+        $cmd = mb_strtolower($msg[0]);
+        unset($msg[0]);
+        $args = explode(" ", implode(" ", $msg));
+        $this->args = $args;
+        $this->cmd = $cmd;
     }
-    public function sendMessage($msg, $attachments = []){
-        return $this->utils->sendMessage($msg, $this->peer_id, $attachments);
+    public function getName(){
+        return $this->cmd;
     }
-    public function sendKeyboard($msg, $keyboard, $attachments = []){
-        return $this->utils->sendKeyboard($msg, $this->peer_id, $keyboard, $attachments);
+    public function getArgs(){
+        return $this->args;
     }
-    public function getID(){
-        return $this->id;
+    public function getFull(){
+        return $this->msg;
     }
-    public function getPeerID(){
-        return $this->peer_id;
-    }
-    public function getFirstName(){
-        return $this->utils->getUserInfo($this->id)->response[0]->first_name;
-    }
-    public function getLastName(){
-        return $this->utils->getUserInfo($this->id)->response[0]->last_name;
+    public function getAttachments(){
+        return $this->attachments;
     }
 }
