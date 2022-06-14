@@ -35,7 +35,4 @@ class cmd{
     public function getAttachments(){
         return $this->attachments;
     }
-    public function getCountAttachments(){
-        return count($this->attachments);
-    }
 }
