@@ -19,8 +19,8 @@ class keyboard{
         $this->button = 0;
         $this->line = 0;
     }
-    public function addTextButton($label = "text", $color = "primary", $payload = ""){
-        $this->kb["buttons"][$this->line][$this->button]["action"]["type"] = "text";
+    public function addTextButton($label = "text", $color = "primary", $payload = "", $type = "text"){
+        $this->kb["buttons"][$this->line][$this->button]["action"]["type"] = $type;
         $this->kb["buttons"][$this->line][$this->button]["action"]["label"] = $label;
         $this->kb["buttons"][$this->line][$this->button]["action"]["payload"] = $payload;
         $this->kb["buttons"][$this->line][$this->button]["color"] = $color;
