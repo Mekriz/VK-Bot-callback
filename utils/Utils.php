@@ -27,16 +27,17 @@ class utils{
 		return json_decode($response);
     }
     public function getUserInfo($id, $fields = "first_name,last_name"){
-	if(isset($this->info) && $fields == "first_name,last_name"){
-            return $this->info;
+	if(isset($this->info["main"]) && $this->info["fields"] == $fields){
+            return $this->info["main"];
 	}
-        $this->info = $this->curlRequest(array(
+	$this->info["fields"] = $fields;
+        $this->info["main"] = $this->curlRequest(array(
         'user_ids' => $id,
         'access_token' => $this->token,
         'v' => '5.103',
         'fields' => $fields
         ), "users.get");
-	return $this->info;
+	return $this->info["main"];
     }
     public function sendMessage($msg, $peer_id, $attachments = []){
         return $this->curlRequest(array(
