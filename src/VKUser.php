@@ -36,4 +36,7 @@ class user{
     public function getLastName(){
         return $this->utils->getUserInfo($this->id)->response[0]->last_name;
     }
+    public function getUInfo($field){
+        return $this->utils->getUserInfo($this->id, $field)->response[0];
+    }
 }
