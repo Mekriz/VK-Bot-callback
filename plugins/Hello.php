@@ -35,7 +35,8 @@ class Hello{
             $kb->addTextButton("🍏 яблоко", "positive");
             $kb->addTextButton("🍎 яблоко", "negative");
             $kb->addLine();
-            $kb->addTextButton("Выбирай");
+            $kb->addTextButton("Выбирай", "primary");
+            /* всего есть 4 цвета (4-й это secondary) */
             $user->sendKeyboard("Клавиатура", $kb->getAll());
         }
         if($cmd == "/привет"){
