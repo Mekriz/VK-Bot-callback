@@ -12,31 +12,34 @@
    ╚═╝░░░░░╚═╝╚══════╝  ╚═╝░░╚═╝╚═╝░░╚═╝╚═╝╚══════╝
 */
 class keyboard{
-    
-    public function __construct($inline = false, $one_time = false){
+   
+    /* хз зачем публик я написал */
+   
+    public int $button = 0;
+    public int $line = 0;
+   
+    public function __construct(bool $inline = false, bool $one_time = false): void{
         $this->kb["inline"] = $inline;
         $this->kb["one_time"] = $one_time;
-        $this->button = 0;
-        $this->line = 0;
     }
-    public function addTextButton($label = "text", $color = "primary", $payload = "", $type = "text"){
+    public function addTextButton(string $label, string $color, string $payload = "", string $type = "text"): void{
         $this->kb["buttons"][$this->line][$this->button]["action"]["type"] = $type;
         $this->kb["buttons"][$this->line][$this->button]["action"]["label"] = $label;
         $this->kb["buttons"][$this->line][$this->button]["action"]["payload"] = $payload;
         $this->kb["buttons"][$this->line][$this->button]["color"] = $color;
         $this->button++;
     }
-    public function addOpenLinkButton($link = "https://vk.com/m.kriz", $label = "link", $payload = ""){
+    public function addOpenLinkButton(string $link, string $label, string $payload = ""): void{
         $this->kb["buttons"][$this->line][$this->button]["action"]["type"] = "open_link";
         $this->kb["buttons"][$this->line][$this->button]["action"]["label"] = $label;
         $this->kb["buttons"][$this->line][$this->button]["action"]["payload"] = $payload;
         $this->kb["buttons"][$this->line][$this->button]["action"]["link"] = $link;
         $this->button++;
     }
-    public function addLine(){
+    public function addLine(): void{
         $this->line++;
     }
-    public function getAll(){
+    public function getAll(): array{
         return $this->kb;
     }
 }
